@@ -8,10 +8,6 @@ export default {
 
 	computed: {
 
-		// isLoading () {
-		// 	return netlify.isLoading
-		// },
-
 		allDeploys () {
 			return netlify.deploys
 		},
@@ -68,16 +64,12 @@ export default {
 			</div>
 		</div>
 
-		<!-- <dump v-if="dump" :value="dump" /> -->
-
 	</div>
 </template>
 
 <style lang="scss">
 
 .c-page-sites {
-	// color: $color-white;
-	// background-color: $color-black;
 	@include buffer-relative-bottom;
 }
 
