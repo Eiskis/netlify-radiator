@@ -1,4 +1,5 @@
 module.exports = {
+	functions: '/.netlify/functions/',
 
 	// Canonical production URL
 	// Needed for robots.txt and sitemap.xml generation in production builds
