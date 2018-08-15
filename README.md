@@ -1,54 +1,29 @@
-# Bellevue
-
-**Bellevue** is a full-featured frontend project template for modern single-page applications built on Vue.js and Webpack.
-
-- Demo: [bellevue.netlify.com](https://bellevue.netlify.com/demo)
-- Documentation: [eiskis.gitbooks.io/bellevue](https://eiskis.gitbooks.io/bellevue/)
-- Source and issues: [github.com/Eiskis/bellevue](https://github.com/Eiskis/bellevue)
-
-Bellevue is based on the official `vuejs-templates/webpack` template, but extends it with many additional tooling features such as preconfigured SCSS support, SVG pipeline, extensive linting and centralised configuration.
-
-While the official template is only a _Hello world_, Bellevue's goal is to set you up with a well-documented, [thought-out application structure](https://eiskis.gitbooks.io/bellevue/app/overview.html) with all the patterns you need for building a complex application such as SVG compilation, routing, state management, persistence and more (see [feature comparison](https://eiskis.gitbooks.io/bellevue/overview/comparison.html)).
+# Netlify radiator
 
 ## Requirements
 
-1. The Node version defined in [.nvmrc](./nvmrc)
+1. Clone repo
+2. `npm install`
+3. Generate a personal access token on [app.netlify.com/account/applications](https://app.netlify.com/account/applications)
 
-**Protip:** manage node versions easily with [nvm](https://github.com/creationix/nvm).
+With the access token, this radiator can access your sites via Netlify's API. It doesn't support anything but read operations currently, although the API does support a lot of functionality as [defined in the documentation](https://www.netlify.com/docs/api/).
 
-## Build Setup
+**Protip:** for increased robustness, use [nvm](https://github.com/creationix/nvm) to ensure you're using the recommended version of Node.
 
-``` bash
-# install dependencies
-npm install
+## Deploying to Netlify
 
-# serve with hot reload at localhost:8080
-npm run dev
+1. Deploy your fork as a new Netlify site. You can choose a cryptic name if you don't want people to find your radiator easily.
+2. Add the access token you generated as a [build environment variable](https://app.netlify.com/sites/bellevue/settings/deploys) with the key `ACCESS_TOKEN`
+3. Optional: add an environment variable `SITES` with a comma-separated list of the site names you want to show (`name` is the page title you see for each site on Netlify). If you don't do this, all your sites will be shown.
+4. Trigger a deploy manually after editing the environment variables for good measure
 
-# serve with hot reload at custom port
-PORT=1234 npm run dev
+Your radiator should now show the status of your sites.
 
-# build for production with minification
-npm run build
+## Running locally
 
-# build for production and view the bundle analyzer report
-npm run build:report
+You need to start up a couple of node scripts in your terminal, inserting the same options as above as environment variables:
 
-# run unit tests
-npm run unit
+1. Run `ACCESS_TOKEN=abcdefgthisismyaccesstoken1234 npm run lambda:dev` to start the backend server
+2. Run `npm run dev` to start the client
 
-# run unit tests and show coverage report
-npm run unit:report
-
-# run unit tests and with hot reload (`jest --watch`)
-# NOTE: You have more options in the terminal after you run this command
-# NOTE: You can change this to `--watchAll` in `package.json` in case of issues
-# NOTE: See https://github.com/facebook/jest/issues/4883
-npm run unit:watch
-
-# run e2e tests
-npm run e2e
-
-# run all tests
-npm test
-```
+The backend will start up on port `9000` by default. On the client-side this is configured in `config/dev/paths.js`.
