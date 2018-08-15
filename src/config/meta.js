@@ -2,10 +2,10 @@
 module.exports = {
 
 	// Will be used in base HTML templating
-	title: 'Bellevue',
-	description: 'A full-featured frontend project template for modern single-page applications built on Vue.js and Webpack.',
-	themeColor: '#42b983',
-	backgroundColor: '#fafafa',
+	title: 'Netlify radiator',
+	description: 'Shows status of our Netlify deployments.',
+	themeColor: '#00ad9f',
+	backgroundColor: '#000000',
 
 	// Localisation
 	defaultLocale: 'en',
