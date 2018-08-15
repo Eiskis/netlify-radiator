@@ -46,9 +46,9 @@ module.exports = {
 	// http://www.robotstxt.org/meta.html
 	robotsMeta: [
 		// 'index',
-		// 'noindex',
+		'noindex',
 		// 'follow',
-		// 'nofollow'
+		'nofollow'
 	]
 
 }
