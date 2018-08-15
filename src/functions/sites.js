@@ -1,6 +1,7 @@
 const filter = require('lodash').filter
 const includes = require('lodash').includes
 const keyBy = require('lodash').keyBy
+const map = require('lodash').map
 const merge = require('lodash').merge
 const axios = require('axios')
 
@@ -29,7 +30,11 @@ exports.handler = (event, context, callback) => {
 			console.log('Netlify sites', sites.length)
 
 			if (sitesToShow) {
-				const siteList = sitesToShow.split(',')
+				let siteList = sitesToShow.split(',')
+				siteList = map(siteList, (siteName) => {
+					return siteName.trim()
+				})
+
 				console.log('Filtering site list', sitesToShow, siteList)
 
 				sites = filter(sites, (site) => {
