@@ -12,24 +12,28 @@ export default {
 		// 	return netlify.isLoading
 		// },
 
-		allSites () {
-			return netlify.sites
-		},
-
-		sites () {
-			return sortBy(values(this.allSites), 'updated_at').reverse()
-		},
-
 		allDeploys () {
 			return netlify.deploys
+		},
+
+		allSites () {
+			return netlify.sites
 		},
 
 		deploys () {
 			return sortBy(values(this.allDeploys), 'created_at').reverse().slice(0, 50)
 		},
 
+		sites () {
+			return sortBy(values(this.allSites), 'updated_at').reverse()
+		},
+
+		isLoading () {
+			return netlify.isLoading
+		},
+
 		isEmpty () {
-			return isEmpty(this.sites) || isEmpty(this.deploys) ? true : false
+			return isEmpty(this.allDeploys) || isEmpty(this.allSites)
 		}
 
 	}
@@ -40,11 +44,11 @@ export default {
 <template>
 	<div :class="classes" :limit="null">
 
-		<!-- <fade>
-			<div v-if="isLoading" class="c-page-sites-spinner">
+		<fade>
+			<div v-if="isEmpty && isLoading" class="c-page-sites-spinner">
 				<spinner />
 			</div>
-		</fade> -->
+		</fade>
 
 		<div v-if="!isEmpty" class="c-page-sites-sites">
 			<div
@@ -78,18 +82,27 @@ export default {
 }
 
 .c-page-sites-spinner {
-	@include absolute;
+	@include keep-full-center;
+	@include fixed;
 	@include pad-horizontal;
 	@include radius-round;
 	z-index: 10;
-	top: 1em;
-	left: 1em;
-	width: 1em;
-	height: 1em;
+	width: 3em;
+	height: 3em;
+	color: $color-netlify;
 }
 
 .c-page-sites-cell {
 	@include flex-item-fixed;
+}
+
+.c-page-sites-deploys {
+
+	.c-page-sites-cell {
+		@include buffer-horizontal;
+		@include push-vertical;
+	}
+
 }
 
 .c-page-sites-sites {
@@ -106,15 +119,6 @@ export default {
 			@include buffer-left;
 		}
 
-	}
-
-}
-
-.c-page-sites-deploys {
-
-	.c-page-sites-cell {
-		@include buffer-horizontal;
-		@include push-vertical;
 	}
 
 }
