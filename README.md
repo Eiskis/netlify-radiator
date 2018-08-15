@@ -2,7 +2,7 @@
 
 ## Requirements
 
-1. Clone repo
+1. Fork repo
 2. `npm install`
 3. Generate a personal access token on [app.netlify.com/account/applications](https://app.netlify.com/account/applications)
 
@@ -12,18 +12,46 @@ With the access token, this radiator can access your sites via Netlify's API. It
 
 ## Deploying to Netlify
 
-1. Deploy your fork as a new Netlify site. You can choose a cryptic name if you don't want people to find your radiator easily.
-2. Add the access token you generated as a [build environment variable](https://app.netlify.com/sites/bellevue/settings/deploys) with the key `ACCESS_TOKEN`
-3. Optional: add an environment variable `SITES` with a comma-separated list of the site names you want to show (`name` is the page title you see for each site on Netlify). If you don't do this, all your sites will be shown.
-4. Trigger a deploy manually after editing the environment variables for good measure
+You can deploy a copy of this radiator on your Netlify account so you always have the radiator live showing you the status of your projects. This radiator will be public, but you can choose a cryptic name if you don't want people to find your radiator easily.
 
-Your radiator should now show the status of your sites.
+### 1. Fork this repo on GitHub
 
-## Running locally
+Go to [github.com/Eiskis/netlify-radiator](https://github.com/Eiskis/netlify-radiator) and press fork to have a version on your account you can deploy.
 
-You need to start up a couple of node scripts in your terminal, inserting the same options as above as environment variables:
+### 2. Generate a personal access token
 
-1. Run `ACCESS_TOKEN=abcdefgthisismyaccesstoken1234 npm run lambda:dev` to start the backend server
-2. Run `npm run dev` to start the client
+Go to on [app.netlify.com/account/applications](https://app.netlify.com/account/applications).
+
+![Deploy settings](./docs/netlify-settings.png)
+
+### 3. Add your fork as a new project to Netlify.
+
+1. Under "advanced settings", add an environment variable `ACCESS_TOKEN` with your generated access token as the value.
+2. Optional: add an environment variable `SITES` with a comma-separated list of the site names you want to show. If you don't do this, all your sites will be shown. Each project's `name` is shown as the page title when you navigate to the project on Netlify.
+
+Now you just have to wait for Netlify to deploy your radiator, and you're done! You can edit environment variables in project settings, so you don't have to redeploy to show more sites or change the access token.
+
+## Development
+
+Since you have a fork on your account, you're free to make any edits to the codebase you want.
+
+The project has a Vue-based frontend (on [Bellevue](https://eiskis.gitbooks.io/bellevue/)) and a [Netlify lambda function](https://www.netlify.com/docs/functions/) that fetches project data from your account. For development work, you need to start the client app's Webpack pipeline, and a backend process that runs Netlify lambdas. Both run on node.
+
+For the latter, you'll also need to insert the same options as above using environment variables:
+
+1. Client: Run `npm run dev` to start the client
+2. Lambdas: Run `ACCESS_TOKEN=abcdefgthisismyaccesstoken1234 npm run lambda:dev` to start the backend server
 
 The backend will start up on port `9000` by default. On the client-side this is configured in `config/dev/paths.js`.
+
+If you don't need to make changes to the lambdas, you can also connect to the version you have on Netlify by using your project's URL in the path:
+
+`config/dev/paths.js`
+```js
+{
+  // ...
+  functions: 'https://your-site-830jdj.netlify.com/.netlify/functions/'
+}
+```
+
+This way you don't need to use environment variables locally but you can still develop the frontend.
