@@ -5,8 +5,8 @@ export default [
 
 	{
 		path: '/',
-		name: 'home',
-		component: components.PageHome
+		name: 'sites',
+		component: components.PageSites
 	},
 
 	{

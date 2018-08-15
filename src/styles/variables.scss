@@ -1,7 +1,7 @@
 // This template uses Moabit by default
 // If you want to keep using it, see what variables are loaded by default here:
 // https://github.com/Eiskis/moabit/blob/master/variables.scss
-$color-vue: #4fc08d;
+$color-netlify: #00ad9f;
 
 $color-very-very-light-grey: #fafafa;
 $color-very-light-grey: #f6f6f6;
@@ -9,12 +9,8 @@ $color-light-grey: #eaeaea;
 $color-grey: #b0b0b0;
 $color-dark: #2c3e50;
 $color-very-dark: #101010;
-
-// Typography
-$font-sans: 'Source Sans Pro', 'Source Sans', 'system-ui', 'San Francisco', 'Helvetica Neue', 'Helvetica', 'Segoe UI', 'Segoe WP', 'Arial', sans-serif;
-$font-serif: 'Droid Serif', 'Georgia', serif;
-$font-mono: 'Roboto Mono', 'Monaco', 'Menlo', 'Segoe UI Mono', 'Consolas', courier, monospace;
-$font-display: 'Dosis', 'Avenir', $font-sans;
+$color-white: #fff;
+$color-black: #000;
 
 
 
@@ -59,12 +55,13 @@ $pad-loose-vertical: 10px;
 
 
 // Defaults
-$default-font: $font-sans;
 $default-font-size: 18px;
 
-$default-color-background: $color-very-very-light-grey;
-$default-color-text: $color-dark;
-$default-color-link: $color-vue;
-$default-color-link-active: color-saturate($color-vue);
+$default-color-background: $color-black;
+$default-color-text: $color-white;
+// $default-color-background: $color-white;
+// $default-color-text: $color-dark;
+$default-color-link: $color-netlify;
+$default-color-link-active: color-saturate($color-netlify);
 $default-color-border: $color-light-grey;
 $default-shadow-color: $color-dark;
