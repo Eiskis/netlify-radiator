@@ -22,6 +22,7 @@ export { default as Ellipsis } from './snippets/Ellipsis'
 export { default as ExternalLink } from './snippets/ExternalLink'
 export { default as Icon } from './snippets/Icon'
 export { default as Spinner } from './snippets/Spinner'
+export { default as Tag } from './snippets/Tag'
 export { default as Vector } from './snippets/Vector'
 
 // Transitions

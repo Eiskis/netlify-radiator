@@ -20,11 +20,9 @@ export default {
 			target="_blank">
 
 			<div class="c-deploy-state">
-				{{ deploy.state }}
-			</div>
-
-			<div class="c-deploy-name">
-				{{ deploy.name }}
+				<tag :color="deploy.state === 'error' ? 'red' : 'green'">
+					{{ deploy.state }}
+				</tag>
 			</div>
 
 			<div
@@ -33,7 +31,11 @@ export default {
 					'c-deploy-branch-master': deploy.branch === 'master'
 				}"
 			>
-				{{ deploy.branch }}
+				<tag>{{ deploy.branch }}</tag>
+			</div>
+
+			<div class="c-deploy-name">
+				{{ deploy.name }}
 			</div>
 
 			<!-- <div class="c-deploy-url">
@@ -68,33 +70,42 @@ export default {
 	@include flex;
 }
 
+.c-deploy-state,
+.c-deploy-branch,
+.c-deploy-name,
+.c-deploy-time {
+	@include pad-tight;
+}
+
+.c-deploy-state,
+.c-deploy-branch,
+.c-deploy-time {
+	@include flex-item-fixed;
+}
+
+.c-deploy-name {
+	@include flex-item-fluid;
+}
+
 .c-deploy-name {
 	@include type-strong;
 	color: $color-netlify;
 }
 
-.c-deploy-branch {
-	@include inline-block;
-	@include radius-tight;
-	@include pad-tight;
-	@include type-small;
-	@include type-uppercase;
-	color: $color-blue;
-}
+// .c-deploy-branch {
+// 	color: $color-blue;
+// }
 
-.c-deploy-branch-master {
-	color: $color-white;
-	opacity: 0.25;
-}
+// .c-deploy-branch-master {
+// 	color: $color-white;
+// 	opacity: 0.25;
+// }
 
-.c-deploy-state {
-	@include inline-block;
-	@include radius-tight;
-	@include pad-tight;
-	@include type-small;
-	@include type-uppercase;
-	background-color: color-translucent($color-white, 0.25);
-}
+// .c-deploy-state {
+// 	.c-tag {
+// 		background-color: color-translucent($color-white, 0.25);
+// 	}
+// }
 
 </style>
 
