@@ -20,7 +20,15 @@ export default {
 			target="_blank">
 
 			<div class="c-deploy-state">
-				<tag :color="deploy.state === 'error' ? 'red' : 'green'">
+				<tag
+					:color="
+						deploy.state === 'error'
+							? 'red'
+							: deploy.state === 'building'
+								? 'yellow'
+								: 'green'
+					"
+				>
 					{{ deploy.state }}
 				</tag>
 			</div>
@@ -83,23 +91,26 @@ export default {
 	@include flex-item-fixed;
 }
 
-.c-deploy-name {
-	@include flex-item-fluid;
+.c-deploy-state {
+	.c-tag {
+		width: 8em;
+	}
 }
 
 .c-deploy-name {
+	@include flex-item-fluid;
 	@include type-strong;
 	color: $color-netlify;
 }
 
 // .c-deploy-branch {
-// 	color: $color-blue;
+	// 	color: $color-blue;
 // }
 
-// .c-deploy-branch-master {
-// 	color: $color-white;
-// 	opacity: 0.25;
-// }
+.c-deploy-branch-master {
+	color: $color-blue;
+	// opacity: 0.25;
+}
 
 // .c-deploy-state {
 // 	.c-tag {
