@@ -16,6 +16,7 @@ export { default as PageSites } from './pages/PageSites'
 
 // Snippets
 export { default as Bitmap } from './snippets/Bitmap'
+export { default as DateTime } from './snippets/DateTime'
 export { default as Dump } from './snippets/Dump'
 export { default as Ellipsis } from './snippets/Ellipsis'
 export { default as ExternalLink } from './snippets/ExternalLink'

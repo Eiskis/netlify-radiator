@@ -40,8 +40,9 @@ export default {
 				{{ deploy.url }}
 			</div> -->
 
-			<div class="c-deploy-time">
-				{{ deploy.published_at ? deploy.published_at : '' }} ({{ deploy.deploy_time }} s)
+			<div v-if="deploy.published_at" class="c-deploy-time">
+				<date-time :date="deploy.published_at" />
+				({{ deploy.deploy_time }} s)
 			</div>
 
 		</a>
