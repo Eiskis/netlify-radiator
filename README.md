@@ -12,22 +12,33 @@ With the access token, this radiator can access your sites via Netlify's API. It
 
 ## Deploying to Netlify
 
-You can deploy a copy of this radiator on your Netlify account so you always have the radiator live showing you the status of your projects. This radiator will be public, but you can choose a cryptic name if you don't want people to find your radiator easily.
+You can deploy a copy of this radiator on your Netlify account so you always have the radiator live showing you the status of your projects. Your radiator will be public, but you can choose a cryptic name if you don't want people to find your radiator easily.
 
-### 1. Fork this repo on GitHub
+### Quick start
 
-Go to [github.com/Eiskis/netlify-radiator](https://github.com/Eiskis/netlify-radiator) and press fork to have a version on your account you can deploy.
+#### 1. Deploy this repo on Netlify
 
-### 2. Generate a personal access token
+The button below will take you to Netlify and let you deploy a new site:
+
+[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/Eiskis/netlify-radiator)
+
+#### 2. Generate a personal access token
 
 Go to on [app.netlify.com/account/applications](https://app.netlify.com/account/applications).
 
 ![Deploy settings](./docs/netlify-settings.png)
 
-### 3. Add your fork as a new project to Netlify.
+### 3. Add your fork as a new project to Netlify
 
-1. Under "advanced settings", add an environment variable `ACCESS_TOKEN` with your generated access token as the value.
-2. Optional: add an environment variable `SITES` with a comma-separated list of the site names you want to show. If you don't do this, all your sites will be shown. Each project's `name` is shown as the page title when you navigate to the project on Netlify.
+
+### Deploy your own fork
+
+If you want to make some customizations, it's easy to deploy your own fork.
+
+First, go to [github.com/Eiskis/netlify-radiator](https://github.com/Eiskis/netlify-radiator) and press fork to have a version on your account.
+
+1. Under "advanced settings", add an environment variable `NETLIFY_ACCESS_TOKEN` with your generated access token as the value.
+2. Optional: add an environment variable `NETLIFY_SITES` with a comma-separated list of the site names you want to show. If you don't do this, all your sites will be shown. Each project's `name` is shown as the page title when you navigate to the project on Netlify.
 
 Now you just have to wait for Netlify to deploy your radiator, and you're done! You can edit environment variables in project settings, so you don't have to redeploy to show more sites or change the access token.
 
@@ -40,7 +51,7 @@ The project has a Vue-based frontend (on [Bellevue](https://eiskis.gitbooks.io/b
 For the latter, you'll also need to insert the same options as above using environment variables:
 
 1. Client: Run `npm run dev` to start the client
-2. Lambdas: Run `ACCESS_TOKEN=abcdefgthisismyaccesstoken1234 npm run lambda:dev` to start the backend server
+2. Lambdas: Run `NETLIFY_ACCESS_TOKEN=abcdefgthisismyaccesstoken1234 npm run lambda:dev` to start the backend server
 
 The backend will start up on port `9000` by default. On the client-side this is configured in `config/dev/paths.js`.
 

@@ -5,8 +5,8 @@ const map = require('lodash').map
 const merge = require('lodash').merge
 const axios = require('axios')
 
-const accessToken = process.env.ACCESS_TOKEN
-const sitesToShow = process.env.SITES
+const accessToken = process.env.NETLIFY_ACCESS_TOKEN
+const sitesToShow = process.env.NETLIFY_SITES
 
 exports.handler = (event, context, callback) => {
 
